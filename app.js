@@ -1,40 +1,70 @@
-// import chalk from 'chalk';
+const chalk = require('chalk')
 const yargs = require('yargs')
-// import yargs from 'yargs'
-// import vali from 'validator';
-// const log = console.log
-// console.log(process.argv);
-// console.log(yargs.version);
-// yargs.version()
-const argv = yargs.command({
-  command: 'add',
-  description: 'Adding new note',
-  handler: function () {
-    console.log("Added New note Done !");
-  }
+const notes = require('./notes.js')
+
+// Customize yargs version
+yargs.version('1.1.0')
+
+// Create add command
+yargs.command({
+    command: 'add',
+    describe: 'Add a new note',
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.addNote(argv.title, argv.body)
+    }
 })
-yargs.parse();
 
+// Create remove command
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a note',
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.removeNote(argv.title)
+    }
+})
 
+// Create list command
+yargs.command({
+    command: 'list',
+    describe: 'List your notes',
+    handler() {
+        notes.listNotes()
+    }
+})
 
+// Create read command
+yargs.command({
+    command: 'read',
+    describe: 'Read a note',
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title)
+    }
+})
 
-// console.log(vali.isEmail('hhgmail.com'));
-// // console.log(vali.isURL('hhgmail.com'));
-
-
-// console.log(chalk.bold.red.bgBlue.inverse('Hello Worlds !'));
-// console.log(+process.argv[2] + +process.argv[3]);
-
-
-// const getNotes = require('./Notes')
-// console.log(getNotes());
-
-
-// const add = require('./utils')
-// const sum = add(3, 6)
-// console.log(sum);
-
-
-// import fs from 'fs'
-// const fs = require('fs')
-// fs.appendFileSync('Notes.txt', "I love You")
+yargs.parse()

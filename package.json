@@ -1,28 +1,16 @@
 {
   "name": "notes-app",
   "version": "1.0.0",
-  "description": "Notes Apps",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shahzamaahmad/notesapp.git"
-  },
-  "keywords": [
-    "notes-app",
-    "notesapp"
-  ],
-  "author": "Shahzama Ahmad",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shahzamaahmad/notesapp/issues"
-  },
-  "homepage": "https://github.com/shahzamaahmad/notesapp#readme",
   "dependencies": {
-    "chalk": "^5.0.1",
-    "validator": "^13.7.0",
-    "yargs": "^1.1.0"
+    "chalk": "^2.4.1",
+    "validator": "^10.8.0",
+    "yargs": "^12.0.2"
   }
 }
